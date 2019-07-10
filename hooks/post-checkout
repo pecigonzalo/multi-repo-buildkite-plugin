@@ -43,10 +43,10 @@ if [[ "${#repos[@]}" -gt 0 ]]; then
       folder=""
     fi
 
-    if [[ "${BUILDKITE_PLUGIN_MULTI_REPO_FAIL:-}" =~ "true|1|on" ]]; then
-      git clone -v -- $repo $folder
+    if [[ "${BUILDKITE_PLUGIN_MULTI_REPO_FAIL:-}" =~ true|1|on ]]; then
+      git clone -v -- "$repo" "$folder"
     else
-      git clone -v -- $repo $folder ||
+      git clone -v -- "$repo" "$folder" ||
         (
           echo "^^^ +++"
           echo "Some clone commands failed"

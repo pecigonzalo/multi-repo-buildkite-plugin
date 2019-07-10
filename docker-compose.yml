@@ -1,0 +1,19 @@
+version: '2'
+services:
+  tests:
+    image: buildkite/plugin-tester
+    volumes:
+      - ".:/plugin:ro"
+
+  lint:
+    image: buildkite/plugin-linter
+    command: ['--id', 'pecigonzalo/multi-repo']
+    volumes:
+      - ".:/plugin"
+
+  shellcheck:
+    image: koalaman/shellcheck
+    command: ['--color=always', 'hooks/post-checkout']
+    volumes:
+      - ".:/plugin"
+    working_dir: /plugin
