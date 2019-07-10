@@ -1,0 +1,13 @@
+name: multi-repo
+description: Clones multiple github repositories
+author: https://github.com/buildkite
+requirements: [
+  "git",
+]
+configuration:
+  properties:
+    repos:
+      type: [string, array]
+  required:
+    - repos
+  additionalProperties: false
